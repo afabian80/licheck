@@ -2,9 +2,25 @@ package com.nsn.cam.license
 
 import com.nsn.cam.license.DependencyCollector
 
-class Checker {
+// TODO: rename to LicenseChecker
+class Checker { 
+	private final static String POM_FILE = 'effective-pom.xml' // TODO: use underscore instead
+	private final static String REGISTRY_FILE = 'license_registry.xml'
+	private final static String REPORT_FILE = 'license_report.xml'
+
 	public static void main(String[] args) {
-		DependencyCollector dc = new DependencyCollector(new File('effective-pom.xml'))
-		dc.collect()
+		DependencyCollector dc = new DependencyCollector(new File(POM_FILE))
+		dc.collect() // TODO:rename to collecDependencies
+		LicenseRegistry registry = new LicenseRegistry(new File(REGISTRY_FILE))
+		LicenseReporter reporter = new LicenseReporter(new File(REPORT_FILE))
+		dc.dependencyMap.each { dep, userProjects ->
+			if (!registry.contains(dep)) {
+				reporter.reportMissing(dep, userProjects)
+			}
+			else {
+				reporter.reportFound(dep)
+			}
+		}
+		println "License checking done."
 	}
 }
