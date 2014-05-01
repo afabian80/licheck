@@ -1,10 +1,10 @@
 package com.nsn.cam.license
 
-import com.nsn.cam.license.PomParser
+import com.nsn.cam.license.DependencyCollector
 
 class Checker {
 	public static void main(String[] args) {
-		PomParser parser = new PomParser(new File('effective-pom.xml'))
-		parser.parse()
+		DependencyCollector dc = new DependencyCollector(new File('effective-pom.xml'))
+		dc.collect()
 	}
 }

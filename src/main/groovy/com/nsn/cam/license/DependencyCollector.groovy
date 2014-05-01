@@ -1,14 +1,14 @@
 package com.nsn.cam.license
 
-class PomParser {
+class DependencyCollector {
 	File pomFile
 	def dependencyMap = [:]
 
-	PomParser(File pomFile) {
+	DependencyCollector(File pomFile) {
 		this.pomFile = pomFile
 	}
 
-	void parse() {
+	void collect() {
 		def projects = new XmlSlurper().parse(this.pomFile)
 		projects.project.each { project ->
 			String projectStr = "${project.groupId}:${project.artifactId}"
