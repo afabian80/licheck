@@ -8,7 +8,10 @@ class PomParser {
 	}
 
 	void parse() {
-		println 'parsed'
+		def projects = new XmlSlurper().parse(this.pomFile)
+		projects.project.each { p ->
+			println "Processing ${p.artifactId}..."
+		}
 	}
 
 }
