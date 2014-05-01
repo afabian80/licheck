@@ -1,7 +1,5 @@
 package com.nsn.cam.license
 
-import com.nsn.cam.license.DependencyCollector
-
 class LicenseChecker { 
 	private final static String POM_FILE = 'effective_pom.xml'
 	private final static String REGISTRY_FILE = 'license_registry.xml'
