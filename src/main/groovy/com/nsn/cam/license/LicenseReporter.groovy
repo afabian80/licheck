@@ -8,7 +8,7 @@ class LicenseReporter {
 	}
 
 	void reportMissing(dep, userProjects) {
-		println("Missing entry for $dep")
+		println("Missing entry for $dep (used by ${userProjects.size()} modules)")
 	}
 
 	void reportFound(dep) {
