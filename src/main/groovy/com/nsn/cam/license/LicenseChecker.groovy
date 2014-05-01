@@ -11,11 +11,11 @@ class LicenseChecker {
 		LicenseRegistry registry = new LicenseRegistry(new File(REGISTRY_FILE))
 		LicenseReporter reporter = new LicenseReporter(new File(REPORT_FILE))
 		dc.dependencies.each { dep, userProjects ->
-			if (!registry.contains(dep)) {
-				reporter.reportMissing(dep, userProjects)
+			if (registry.contains(dep)) {
+				reporter.reportFound(dep)
 			}
 			else {
-				reporter.reportFound(dep)
+				reporter.reportMissing(dep, userProjects)
 			}
 		}
 		println "License checking done."
