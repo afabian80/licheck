@@ -2,7 +2,7 @@ package com.nsn.cam.license
 
 class DependencyCollector {
 	File pomFile
-	def dependencies = [:]	// TODO: rename to dependencies
+	def dependencies = [:]
 
 	DependencyCollector(File pomFile) {
 		this.pomFile = pomFile
