@@ -10,10 +10,10 @@ class Checker {
 
 	public static void main(String[] args) {
 		DependencyCollector dc = new DependencyCollector(new File(POM_FILE))
-		dc.collect() // TODO:rename to collecDependencies
+		dc.collectDependencies()
 		LicenseRegistry registry = new LicenseRegistry(new File(REGISTRY_FILE))
 		LicenseReporter reporter = new LicenseReporter(new File(REPORT_FILE))
-		dc.dependencyMap.each { dep, userProjects ->
+		dc.dependencies.each { dep, userProjects ->
 			if (!registry.contains(dep)) {
 				reporter.reportMissing(dep, userProjects)
 			}
