@@ -17,7 +17,7 @@ class LicenseChecker {
 		dc.collectDependencies()
 		
 		dc.dependencies.each { dep, userProjects ->
-			if (registry.contains(dep)) {
+			if (registry.containsMajor(dep)) {
 				reporter.reportFound(dep)
 			}
 			else {
