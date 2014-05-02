@@ -1,8 +1,18 @@
 apply plugin: 'groovy'
 apply plugin: 'application'
 apply plugin: 'sonar-runner'
+apply plugin: 'cobertura'
 
 mainClassName = 'com.nsn.cam.license.LicenseChecker'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "net.saliman:gradle-cobertura-plugin:2.2.2"
+    }
+}
 
 repositories {
 	mavenCentral()
@@ -18,5 +28,15 @@ sonarRunner {
 		property "sonar.host.url", "http://localhost:9000" 
 		property "sonar.jdbc.url", "jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true" 
 		property "sonar.language", "grvy" 
+		//property "sonar.groovy.coveragePlugin", "cobertura"
+		property "sonar.groovy.cobertura.reportPath", "${project.buildDir}/reports/cobertura/coverage.xml"
 	}
+}
+
+cobertura {
+	coverageFormats = ['xml', 'html']
+}
+
+project.afterEvaluate {
+	tasks.sonarRunner.dependsOn tasks.coberturaReport
 }
