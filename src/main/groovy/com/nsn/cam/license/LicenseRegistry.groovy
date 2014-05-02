@@ -14,6 +14,11 @@ class LicenseRegistry {
 		return this.artifactLicenses.keySet().contains(dep)
 	}
 
+	boolean containsMajor(String dep) {
+		String version = dep.split(':')[2]
+		println "Looking for major version $version"
+	}
+
 	private void parseDb() {
 		registryFile.eachLine { regLine ->
 			def (artifact, license) = regLine.split()
