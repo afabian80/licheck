@@ -7,16 +7,19 @@ class LicenseRegistry {
 	LicenseRegistry(File registryFile) {
 		this.registryFile = registryFile
 		parseDb()
+
 	}
 
 	boolean contains(String dep) {
-		//TODO: compare based on major version
 		return this.artifactLicenses.keySet().contains(dep)
 	}
 
 	boolean containsMajor(String dep) {
-		String version = dep.split(':')[2]
-		println "Looking for major version $version"
+		def (group, artifact, version) = dep.split(':')
+		// Matching: '3', '4.11', '5.12.2', '6.1.4.3', '7.3.5-RC3'
+		def match = ( version =~ /(\d+)(\..*)?/)
+  		String majorVersion = match[0][1]
+		return this.contains("$group:$artifact:$majorVersion")
 	}
 
 	private void parseDb() {
