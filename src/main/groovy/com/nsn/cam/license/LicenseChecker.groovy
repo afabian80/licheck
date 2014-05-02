@@ -18,6 +18,5 @@ class LicenseChecker {
 				reporter.reportMissing(dep, userProjects)
 			}
 		}
-		println "License checking done."
 	}
 }

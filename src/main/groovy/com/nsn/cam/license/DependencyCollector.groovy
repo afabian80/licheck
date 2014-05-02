@@ -19,13 +19,15 @@ class DependencyCollector {
 				addDep(projectStr, dep)
 			}
 		}
+		/*
 		println "Map contains ${this.dependencies.size()} keys."
 		this.dependencies.sort().each { key, value ->
-			//println "$key (in ${value.size()} modules)"
+			println "$key (in ${value.size()} modules)"
 			for (item in value.sort()) {
-				//println "\t${item}"
+				println "\t${item}"
 			}
 		}
+		*/
 	}
 
 	void addDep(projectStr, dep) {
