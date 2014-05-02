@@ -1,3 +1,4 @@
 /.gradle
 /build
 /effective_pom.xml
+/codenarc_rules

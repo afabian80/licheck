@@ -2,6 +2,7 @@ apply plugin: 'groovy'
 apply plugin: 'application'
 apply plugin: 'sonar-runner'
 apply plugin: 'cobertura'
+apply plugin: 'codenarc'
 
 mainClassName = 'com.nsn.cam.license.LicenseChecker'
 
@@ -40,3 +41,4 @@ cobertura {
 project.afterEvaluate {
 	tasks.sonarRunner.dependsOn tasks.coberturaReport
 }
+
