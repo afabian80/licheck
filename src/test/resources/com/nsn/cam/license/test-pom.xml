@@ -4,6 +4,31 @@
 		<artifactId>project1</artifactId>
 		<version>1.2</version>
 		<packaging>pom</packaging>
+		<dependencies>
+			<dependency>
+				<groupId>org.company3</groupId>
+				<artifactId>art10</artifactId>
+				<version>1.0</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.company3</groupId>
+				<artifactId>art20</artifactId>
+				<version>2.0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.company4</groupId>
+				<artifactId>art30</artifactId>
+				<version>1.0</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.company4</groupId>
+				<artifactId>art40</artifactId>
+				<version>2.0</version>
+			</dependency>
+		</dependencies>
 		<dependencyManagement>
 			<dependencies>
 				<dependency>
