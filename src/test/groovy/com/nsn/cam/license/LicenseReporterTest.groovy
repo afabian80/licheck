@@ -2,7 +2,7 @@ package com.nsn.cam.license
 
 class LicenseReporterTest extends GroovyTestCase {
 	private LicenseReporter reporter
-	private String REPORT_FILE_NAME = 'license_report.txt'
+	private final static String REPORT_FILE_NAME = 'license_report.txt'
 
 	void setUp() {
 		super.setUp()
