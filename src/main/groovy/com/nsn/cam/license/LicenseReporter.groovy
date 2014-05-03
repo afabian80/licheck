@@ -27,8 +27,8 @@ class LicenseReporter {
 				missingLicenses.keySet().sort().each { key ->
 					'dependency'(name: "$key") {
 						if (verbose) {
-							missingLicenses[key].each { proj ->
-								'project'(name: "$proj")
+							missingLicenses[key].each { proj -> // NOSONAR
+								'project'(name: "$proj")		// NOSONAR
 							}
 						}
 					}
@@ -38,8 +38,8 @@ class LicenseReporter {
 				okayLicenses.keySet().sort().each { key ->
 					'dependency'(name: "$key") {
 						if (verbose) {
-							okayLicenses[key].each { proj ->
-								'project'(name: "$proj")
+							okayLicenses[key].each { proj ->	// NOSONAR
+								'project'(name: "$proj")		// NOSONAR
 							}
 						}
 					}
