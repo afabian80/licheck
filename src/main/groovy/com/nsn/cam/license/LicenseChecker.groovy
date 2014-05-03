@@ -24,5 +24,6 @@ class LicenseChecker {
 				reporter.reportMissing(dep, userProjects)
 			}
 		}
+		reporter.saveReport()
 	}
 }

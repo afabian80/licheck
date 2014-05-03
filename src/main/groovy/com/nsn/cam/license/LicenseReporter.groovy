@@ -22,8 +22,8 @@ class LicenseReporter {
 	String generateReport() {
 		def writer = new StringWriter()
 		def xml = new MarkupBuilder(writer)
-		xml.report() {
-			'missing'() {
+		xml.report {
+			'missing' {
 				missingLicenses.keySet().sort().each { key ->
 					'dependency'(name: "$key") {
 						missingLicenses[key].each { proj ->
@@ -32,7 +32,7 @@ class LicenseReporter {
 					}
 				}
 			}
-			'found'() {
+			'found' {
 				okayLicenses.keySet().sort().each { key ->
 					'dependency'(name: "$key") {
 						okayLicenses[key].each { proj ->
@@ -43,5 +43,11 @@ class LicenseReporter {
 			}
 		}
 		return writer.toString()
+	}
+
+	void saveReport() {
+		reportFile.withWriter { out ->
+			out.writeLine(this.generateReport())
+		}
 	}
 }
