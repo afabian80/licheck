@@ -20,6 +20,7 @@ class LicenseReporter {
 		foundLicenses[dep] = userProjects
 	}
 
+	// NOSONAR
 	String generateReport(boolean verbose) {
 		def writer = new StringWriter()
 		def xml = new MarkupBuilder(writer)

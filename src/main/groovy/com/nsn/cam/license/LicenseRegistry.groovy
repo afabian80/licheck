@@ -23,6 +23,7 @@ class LicenseRegistry {
 	}
 
 	private void parseDb() {
+		//TODO enable comment and empty lines in the database
 		registryFile.eachLine { regLine ->
 			def (artifact, license) = regLine.split()
 			this.artifactLicenses[artifact] = license

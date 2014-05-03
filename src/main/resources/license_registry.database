@@ -1,1 +1,4 @@
-junit:junit:4	CPL-1.0
+cglib:cglib:2                            "Apache License"             https://github.com/cglib/cglib/wiki
+ch.qos.logback:logback-access:1          "EPL v1.0 and LGPL 2.1"      http://logback.qos.ch/license.html
+ch.qos.logback:logback-classic:1         "EPL v1.0 and LGPL 2.1"      http://logback.qos.ch/license.html
+junit:junit:4                            "CPL-1.0"                    http://sourceforge.net/projects/junit/
