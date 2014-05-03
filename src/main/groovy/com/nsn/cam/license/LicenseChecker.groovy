@@ -5,7 +5,7 @@ class LicenseChecker {
 	private final static String REGISTRY_FILE_NAME = '/license_registry.database'
 	private final static String REPORT_FILE_NAME = 'license_report.xml'
 
-	public static void main(String[] args) {
+	static void main(String[] args) {
 		File pomFile = new File(POM_FILE_NAME)
 		File licenseRegistryFile = new File(this.class.getResource(REGISTRY_FILE_NAME).getFile())
 		File reportFile = new File(REPORT_FILE_NAME)
