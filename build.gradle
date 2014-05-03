@@ -3,6 +3,7 @@ apply plugin: 'application'
 apply plugin: 'sonar-runner'
 apply plugin: 'cobertura'
 apply plugin: 'codenarc'
+apply plugin: 'jenkins'
 
 mainClassName = 'com.nsn.cam.license.LicenseChecker'
 
@@ -11,7 +12,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "net.saliman:gradle-cobertura-plugin:2.2.2"
+        classpath 'net.saliman:gradle-cobertura-plugin:2.2.2'
+        classpath 'hu.rxd:gradle-jenkins-dsl:1.22.+'
     }
 }
 
@@ -40,5 +42,23 @@ cobertura {
 
 project.afterEvaluate {
 	tasks.sonarRunner.dependsOn tasks.coberturaReport
+}
+
+jenkins {
+	server('local') {
+		url 'http://localhost:8080'
+		secure false
+	}
+
+	defaultServer servers.local
+
+	job('license-checker') {
+		scm {
+			git('https://github.com/afabian80/licheck.git')
+		}
+		steps {
+			gradle 'clean build sonarRunner', null, false
+		}
+	}
 }
 
