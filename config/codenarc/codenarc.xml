@@ -52,7 +52,9 @@
       <exclude name="JavaIoPackageAccess"/>
     </ruleset-ref>
     <ruleset-ref path='rulesets/serialization.xml'/>
-    <ruleset-ref path='rulesets/size.xml'/>
+    <ruleset-ref path='rulesets/size.xml'>
+      <exclude name="NestedBlockDepth"/>
+    </ruleset-ref>
     <ruleset-ref path='rulesets/unnecessary.xml'>
       <exclude name="UnnecessaryGetter"/>
       <exclude name="UnnecessaryReturnKeyword"/>

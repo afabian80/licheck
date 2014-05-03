@@ -28,7 +28,7 @@ class LicenseReporterTest extends GroovyTestCase {
 		reporter.reportMissing(missingDep, ['project1', 'project2'])
 		reporter.reportFound(foundDep, ['project3', 'project4'])
 
-		String reportStr = reporter.generateReport()
+		String reportStr = reporter.generateReport(false)
 		println reportStr
 		def report = new XmlSlurper().parseText(reportStr)
 		def missing = report.missing

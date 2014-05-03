@@ -19,15 +19,17 @@ class LicenseReporter {
 		okayLicenses[dep] = userProjects
 	}
 
-	String generateReport() {
+	String generateReport(boolean verbose) {
 		def writer = new StringWriter()
 		def xml = new MarkupBuilder(writer)
 		xml.report {
 			'missing' {
 				missingLicenses.keySet().sort().each { key ->
 					'dependency'(name: "$key") {
-						missingLicenses[key].each { proj ->
-							'project'(name: "$proj")
+						if (verbose) {
+							missingLicenses[key].each { proj ->
+								'project'(name: "$proj")
+							}
 						}
 					}
 				}
@@ -35,8 +37,10 @@ class LicenseReporter {
 			'found' {
 				okayLicenses.keySet().sort().each { key ->
 					'dependency'(name: "$key") {
-						okayLicenses[key].each { proj ->
-							'project'(name: "$proj")
+						if (verbose) {
+							okayLicenses[key].each { proj ->
+								'project'(name: "$proj")
+							}
 						}
 					}
 				}
@@ -47,7 +51,7 @@ class LicenseReporter {
 
 	void saveReport() {
 		reportFile.withWriter { out ->
-			out.writeLine(this.generateReport())
+			out.writeLine(this.generateReport(false))
 		}
 	}
 }
