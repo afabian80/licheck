@@ -5,7 +5,8 @@ import groovy.xml.MarkupBuilder
 class LicenseReporter {
 	File reportFile
 	def missingLicenses = [:]
-	def okayLicenses = [:]
+	def foundLicenses = [:]
+	//TODO: add logic to exclude com.nsn.* artifacts from reports
 
 	LicenseReporter(File reportFile) {
 		this.reportFile = reportFile
@@ -16,7 +17,7 @@ class LicenseReporter {
 	}
 
 	void reportFound(dep, userProjects) {
-		okayLicenses[dep] = userProjects
+		foundLicenses[dep] = userProjects
 	}
 
 	String generateReport(boolean verbose) {
@@ -35,10 +36,10 @@ class LicenseReporter {
 				}
 			}
 			'found' {
-				okayLicenses.keySet().sort().each { key ->
+				foundLicenses.keySet().sort().each { key ->
 					'dependency'(name: "$key") {
 						if (verbose) {
-							okayLicenses[key].each { proj ->	// NOSONAR
+							foundLicenses[key].each { proj ->	// NOSONAR
 								'project'(name: "$proj")		// NOSONAR
 							}
 						}

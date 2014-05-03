@@ -19,7 +19,7 @@ class LicenseReporterTest extends GroovyTestCase {
 	void testReportOkay() {
 		String dep = 'grp:art:1.0'
 		reporter.reportFound(dep, ['project1', 'project2'])
-		assert reporter.okayLicenses.keySet().contains(dep)
+		assert reporter.foundLicenses.keySet().contains(dep)
 	}
 
 	void testGenerateReport() {
